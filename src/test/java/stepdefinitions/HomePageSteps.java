@@ -14,23 +14,20 @@ public class HomePageSteps {
     HomePage homePage = new HomePage(DriverManager.getDriver());
 
 
-
-
-
-    @Then("should Popup Close Button on Home Page")
-    public void shouldPopupCloseButtonOnHomePage() {
+    @When("tabs Popup Close Button on Home Page")
+    public void tabsPopupCloseButtonOnHomePage() {
+        homePage.clickPopupClose();
     }
 
     @Then("should see the Home Page")
     public void shouldSeeTheHomePage() {
+        homePage.checkSearchArea();
     }
 
     @When("taps Search Area on Home Page")
     public void tapsSearchAreaOnHomePage() {
+        homePage.clickSearchArea();
     }
-
-
-
 
 
 

@@ -7,21 +7,31 @@ import utils.ElementHelper;
 public class ResultPage {
     ElementHelper elementHelper;
 
-    By title = By.className("android.widget.TextView");
-    By normalButton = By.id("");
-    By smallButton = By.id("");
-    By switchButton = By.id("");
+
+    By filterIcon = By.xpath("//*[@resource-id='trendyol.com:id/layout_search_filter']/android.widget.ImageView");
+    By filterButton = By.id("trendyol.com:id/textViewFilter");
+    By orderButton = By.id("trendyol.com:id/layout_search_order");
+    By secondProduct = By.id("trendyol.com:id/productCardViewRightProduct");
 
     public ResultPage(WebDriver driver) {
         this.elementHelper = new ElementHelper(driver);
     }
 
-    public String getTitle() {
-        return elementHelper.getText(title);
+    public void checkFilterIcon() {
+         elementHelper.checkElement(filterIcon);
     }
 
-/////////////////////////
+      public void clickFilterButton() {
+         elementHelper.click(filterButton);
+    }
 
+ public void clickOrderButton() {
+         elementHelper.click(orderButton);
+    }
+
+    public void clickSecondProduct() {
+        elementHelper.click(secondProduct);
+    }
 
 
 }

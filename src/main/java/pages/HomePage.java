@@ -7,20 +7,29 @@ import utils.ElementHelper;
 public class HomePage {
     ElementHelper elementHelper;
 
-    By title = By.className("android.widget.TextView");
-    By normalButton = By.id("");
-    By smallButton = By.id("");
-    By switchButton = By.id("");
+
+    By popupCloseIcon = By.id("trendyol.com:id/imageViewTooltipClose");
+    By searchArea = By.id("trendyol.com:id/search_view_inner_container");
 
     public HomePage(WebDriver driver) {
         this.elementHelper = new ElementHelper(driver);
     }
 
-    public String getTitle() {
-        return elementHelper.getText(title);
+    public void clickPopupClose() {
+         elementHelper.click(popupCloseIcon);
     }
 
-/////////////////////////
+
+public void checkSearchArea() {
+         elementHelper.checkElement(searchArea);
+    }
+
+
+public void clickSearchArea() {
+         elementHelper.click(searchArea);
+    }
+
+
 
 
 

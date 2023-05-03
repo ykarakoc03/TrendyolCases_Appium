@@ -15,10 +15,12 @@ public class GenderPageSteps {
 
     @Given("user should see the Gender Page")
     public void userShouldSeeTheGenderPage() {
+        genderPage.checkGenderButton("ERKEK");
     }
 
     @When("taps Gender {string} on Gender Page")
-    public void tapsGenderOnGenderPage(String arg0) {
+    public void tapsGenderOnGenderPage(String genderButton) {
+        genderPage.clickGenderBUtton(genderButton);
     }
 
 

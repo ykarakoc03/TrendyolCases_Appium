@@ -2,6 +2,9 @@ package utils;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -46,6 +49,20 @@ public class ElementHelper {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("mobile:performEditorAction", ImmutableMap.of("action", "done"));
     }
+    public void pressSearch() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("mobile:performEditorAction", ImmutableMap.of("action", "search"));
+
+    }
+    public void pressEnter2() {
+        AndroidDriver driver1 = (AndroidDriver) driver;
+                driver1.pressKey(new KeyEvent(AndroidKey.ENTER));
+    }
+
+  public void pressEnter3(String text) {
+      driver.findElement(By.xpath("")).sendKeys("tshirt"+"\n");
+    }
+
 
     public void click(By locator) {
         findElement(locator).click();
@@ -139,5 +156,17 @@ public class ElementHelper {
         ((RemoteWebDriver) driver).perform(List.of(scroll));
     }
 
-
+    public void scrollDownWithElement(By filtreleme) {
+        int startX = driver.findElement(filtreleme).getSize().getWidth() / 2;
+        int startY = driver.findElement(filtreleme).getSize().getHeight() / 2;
+        int endx = driver.findElement(filtreleme).getSize().getWidth() / 2;
+        int endY = (int) (driver.findElement(filtreleme).getSize().getHeight() * 0.2);
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence scroll = new Sequence(finger, 0);
+        scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
+        scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        scroll.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endx, endY));
+        scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        ((RemoteWebDriver) driver).perform(List.of(scroll));
+    }
 }

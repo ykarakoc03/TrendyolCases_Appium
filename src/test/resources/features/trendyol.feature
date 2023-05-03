@@ -5,7 +5,7 @@ Feature: Trendyol
   Scenario: Enes
     Given user should see the Gender Page
     When taps Gender "ERKEK" on Gender Page
-    Then should Popup Close Button on Home Page
+    When tabs Popup Close Button on Home Page
     Then should see the Home Page
     When taps Search Area on Home Page
     Then should see the Search Page

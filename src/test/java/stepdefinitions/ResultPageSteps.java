@@ -14,21 +14,25 @@ public class ResultPageSteps {
 
     @Then("should see the Result Page")
     public void shouldSeeTheResultPage() {
+   resultPage.checkFilterIcon();
     }
 
     @When("taps Filter on Result Page")
     public void tapsFilterOnResultPage() {
+   resultPage.clickFilterButton();
     }
 
 
 
     @When("taps Order on Result Page")
     public void tapsOrderOnResultPage() {
+        resultPage.clickOrderButton();
     }
 
 
     @When("taps second Product on Result Page")
     public void tapsSecondProductOnResultPage() {
+        resultPage.clickSecondProduct();
     }
 
 

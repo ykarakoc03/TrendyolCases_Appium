@@ -14,14 +14,19 @@ public class FilterPageSteps {
 
     @Then("should see the Filter Page")
     public void shouldSeeTheFilterPage() {
+        filterPage.checkFilterItem();
     }
 
     @When("taps Filter {string} on Filter Page")
-    public void tapsFilterOnFilterPage(String arg0) {
+    public void tapsFilterOnFilterPage(String item) {
+        filterPage.clickFilterItem(item);
     }
 
     @When("taps List Products {string} on Filter Page")
-    public void tapsListProductsOnFilterPage(String arg0) {
+    public void tapsListProductsOnFilterPage(String button) {
+    String currentButton=filterPage.getListProduct();
+   Assert.assertEquals(currentButton,button);
+    filterPage.clickListProduct();
     }
 
 }

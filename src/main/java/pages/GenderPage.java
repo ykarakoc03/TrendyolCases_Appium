@@ -7,20 +7,21 @@ import utils.ElementHelper;
 public class GenderPage {
     ElementHelper elementHelper;
 
-    By title = By.className("android.widget.TextView");
-    By normalButton = By.id("");
-    By smallButton = By.id("");
-    By switchButton = By.id("");
+    By gender = By.className("android.widget.Button");
+
 
     public GenderPage(WebDriver driver) {
         this.elementHelper = new ElementHelper(driver);
     }
 
-    public String getTitle() {
-        return elementHelper.getText(title);
+    public void checkGenderButton(String genderText) {
+        elementHelper.checkElementWithText(gender,genderText);
     }
 
-/////////////////////////
+ public void clickGenderBUtton(String genderText) {
+        elementHelper.clickElementWithText(gender,genderText);
+    }
+
 
 
 

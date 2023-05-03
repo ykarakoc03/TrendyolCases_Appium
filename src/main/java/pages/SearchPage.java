@@ -7,20 +7,26 @@ import utils.ElementHelper;
 public class SearchPage {
     ElementHelper elementHelper;
 
-    By title = By.className("android.widget.TextView");
-    By normalButton = By.id("");
-    By smallButton = By.id("");
-    By switchButton = By.id("");
+    By backIcon = By.id("trendyol.com:id/imageview_action_start");
+    By searchArea = By.id("trendyol.com:id/edittext_search_viewhsh");
+
+
 
     public SearchPage(WebDriver driver) {
         this.elementHelper = new ElementHelper(driver);
     }
 
-    public String getTitle() {
-        return elementHelper.getText(title);
+    public void checkBackIcon() {
+         elementHelper.checkElement(backIcon);
     }
 
-/////////////////////////
+
+ public void sendKeysSearchArea(String text) {
+         elementHelper.sendKeys(searchArea,text);
+         elementHelper.pressSearch();
+    }
+
+
 
 
 
