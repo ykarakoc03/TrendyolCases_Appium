@@ -1,5 +1,4 @@
 package utils;
-
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -13,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
@@ -45,22 +46,24 @@ public class ElementHelper {
         findElement(locator);
     }
 
+
     public void pressEnter() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("mobile:performEditorAction", ImmutableMap.of("action", "done"));
     }
+
     public void pressSearch() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("mobile:performEditorAction", ImmutableMap.of("action", "search"));
-
     }
+
     public void pressEnter2() {
         AndroidDriver driver1 = (AndroidDriver) driver;
-                driver1.pressKey(new KeyEvent(AndroidKey.ENTER));
+        driver1.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 
-  public void pressEnter3(String text) {
-      driver.findElement(By.xpath("")).sendKeys("tshirt"+"\n");
+    public void pressEnter3(String text) {
+        driver.findElement(By.xpath("")).sendKeys("tshirt" + "\n");
     }
 
 
@@ -73,7 +76,7 @@ public class ElementHelper {
     }
 
     public void sendKeys(By locator, String text) {
-        findElement(locator).sendKeys(text);
+        findElement(locator).sendKeys(text + "\n");
     }
 
     public void clickElementWithText(By locator, String text) {
@@ -151,16 +154,19 @@ public class ElementHelper {
         Sequence scroll = new Sequence(finger, 0);
         scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
         scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        scroll.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endx, endY));
+        scroll.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), endx, endY));
         scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         ((RemoteWebDriver) driver).perform(List.of(scroll));
     }
+
 
     public void scrollDownWithElement(By filtreleme) {
         int startX = driver.findElement(filtreleme).getSize().getWidth() / 2;
         int startY = driver.findElement(filtreleme).getSize().getHeight() / 2;
         int endx = driver.findElement(filtreleme).getSize().getWidth() / 2;
         int endY = (int) (driver.findElement(filtreleme).getSize().getHeight() * 0.2);
+
+
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence scroll = new Sequence(finger, 0);
         scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
@@ -169,4 +175,5 @@ public class ElementHelper {
         scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         ((RemoteWebDriver) driver).perform(List.of(scroll));
     }
+
 }

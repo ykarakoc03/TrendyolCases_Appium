@@ -25,6 +25,10 @@ public class ProductPage {
         return elementHelper.getText(productName);
     }
 
+    public void clickAddToBasket() {
+        elementHelper.click(addToBasket);
+    }
+
     public String getAddToBaskest() {
         return elementHelper.getText(addToBasket);
     }

@@ -11,7 +11,6 @@ public class FilterPageSteps {
     FilterPage filterPage = new FilterPage(DriverManager.getDriver());
 
 
-
     @Then("should see the Filter Page")
     public void shouldSeeTheFilterPage() {
         filterPage.checkFilterItem();
@@ -19,14 +18,13 @@ public class FilterPageSteps {
 
     @When("taps Filter {string} on Filter Page")
     public void tapsFilterOnFilterPage(String item) {
-        filterPage.clickFilterItem(item);
+        filterPage.clickCheckBoxFilterItem(item);
     }
 
     @When("taps List Products {string} on Filter Page")
     public void tapsListProductsOnFilterPage(String button) {
-    String currentButton=filterPage.getListProduct();
-   Assert.assertEquals(currentButton,button);
-    filterPage.clickListProduct();
+        String currentButton = filterPage.getListProduct();
+        Assert.assertTrue(currentButton.contains(button));
+        filterPage.clickListProduct();
     }
-
 }

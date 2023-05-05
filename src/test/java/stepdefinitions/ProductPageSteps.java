@@ -11,7 +11,8 @@ import utils.DriverManager;
 
 public class ProductPageSteps {
     ProductPage productPage = new ProductPage(DriverManager.getDriver());
-static String productName;
+    static String productName;
+
     @Then("should see the Product Page")
     public void shouldSeeTheProductPage() {
         productPage.checkImage();
@@ -19,13 +20,14 @@ static String productName;
 
     @When("save Product Name on Product Page")
     public void saveProductNameOnProductPage() {
-    productName = productPage.getProductName();
+        productName = productPage.getProductName();
     }
 
     @And("taps Add To Basket {string} on Product Page")
     public void tapsAddToBasketOnProductPage(String button) {
-    String currentButton = productPage.getAddToBaskest();
-    Assert.assertEquals(currentButton,button);
+        String currentButton = productPage.getAddToBaskest();
+        Assert.assertEquals(currentButton, button);
+        productPage.clickAddToBasket();
     }
 
     @And("taps Size {string} on Product Page")

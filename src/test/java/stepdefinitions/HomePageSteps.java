@@ -14,8 +14,8 @@ public class HomePageSteps {
     HomePage homePage = new HomePage(DriverManager.getDriver());
 
 
-    @When("tabs Popup Close Button on Home Page")
-    public void tabsPopupCloseButtonOnHomePage() {
+    @When("taps Popup Close Button on Home Page")
+    public void shouldPopupCloseButtonOnHomePage() {
         homePage.clickPopupClose();
     }
 

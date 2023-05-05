@@ -15,12 +15,12 @@ public class SearchPageSteps {
 
     @Then("should see the Search Page")
     public void shouldSeeTheSearchPage() {
-   searchPage.checkBackIcon();
+        searchPage.checkBackIcon();
     }
 
     @When("sendkeys Search Area {string} on Search Page")
     public void sendkeysSearchAreaOnSearchPage(String text) {
-    searchPage.sendKeysSearchArea(text);
-    }
+        searchPage.sendKeysSearchArea(text);
 
+    }
 }

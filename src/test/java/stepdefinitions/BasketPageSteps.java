@@ -20,9 +20,13 @@ public class BasketPageSteps {
 
     @And("should see Same Product Name on Basket Page")
     public void shouldSeeSameProductNameOnBasketPage() {
-        String currentButton = basketPage.getProductName();
-        String currentProductName = ProductPageSteps.productName;
-        Assert.assertEquals(currentButton,currentProductName);
+        String productName = ProductPageSteps.productName;
+        String currentProductName = basketPage.getProductName();
+        Assert.assertEquals(currentProductName, productName);
+    }
+    @And("taps Delete Popup on Basket Page")
+    public void tapsDeletePopupOnBasketPage() {
+        basketPage.clickPopupDeleteButton();
     }
 
     @When("taps Delete Button on Basket Page")
@@ -30,10 +34,7 @@ public class BasketPageSteps {
         basketPage.clickDeleteButton();
     }
 
-    @And("taps Delete Popup on Basket Page")
-    public void tapsDeletePopupOnBasketPage() {
-        basketPage.clickPopupDeleteButton();
-    }
+
 
     @Then("should see Empty Message {string} on Basket Page")
     public void shouldSeeEmptyMessageOnBasketPage(String message) {

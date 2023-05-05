@@ -12,14 +12,14 @@ public class OrderPageSteps {
     OrderPage orderPage = new OrderPage(DriverManager.getDriver());
 
 
-
-
     @Then("should see the Order Page")
     public void shouldSeeTheOrderPage() {
+        orderPage.checkPopupClose();
     }
 
     @When("taps Option {string} on Order Page")
-    public void tapsOptionOnOrderPage(String arg0) {
+    public void tapsOptionOnOrderPage(String option) {
+        orderPage.clickOption(option);
     }
 
 }
