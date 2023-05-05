@@ -160,18 +160,20 @@ public class ElementHelper {
     }
 
 
-    public void scrollDownWithElement(By filtreleme) {
-        int startX = driver.findElement(filtreleme).getSize().getWidth() / 2;
-        int startY = driver.findElement(filtreleme).getSize().getHeight() / 2;
-        int endx = driver.findElement(filtreleme).getSize().getWidth() / 2;
-        int endY = (int) (driver.findElement(filtreleme).getSize().getHeight() * 0.2);
+    public void scrollDownWithElement(By locator) {
 
-
+        WebElement element = driver.findElement(locator);
+        int xstartedPozision = element.getRect().getX();
+        int ystartedPozision = element.getRect().getY();
+        int startX = xstartedPozision + (int) (element.getSize().getWidth() / 2);
+        int startY = ystartedPozision + (int) (element.getSize().getHeight() / 2);
+        int endx = xstartedPozision + (int) (element.getSize().getWidth() / 2);
+        int endY = ystartedPozision + (int) (element.getSize().getHeight() * 0.2);
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence scroll = new Sequence(finger, 0);
         scroll.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY));
         scroll.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        scroll.addAction(finger.createPointerMove(Duration.ofMillis(500), PointerInput.Origin.viewport(), endx, endY));
+        scroll.addAction(finger.createPointerMove(Duration.ofMillis(300), PointerInput.Origin.viewport(), endx, endY));
         scroll.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         ((RemoteWebDriver) driver).perform(List.of(scroll));
     }
